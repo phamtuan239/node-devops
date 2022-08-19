@@ -6,7 +6,7 @@ require('./mongodb')
 
 const PORT = process.env.PORT || 5000
 
-app.get('/', (res, req) => {
+app.get('/api/hello', (res, req) => {
   res.send({
     hello: 'Hello, World!'
   })
