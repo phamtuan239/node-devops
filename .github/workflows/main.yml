@@ -9,9 +9,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      - run: ./run.sh
       - run: ls
       - run: printenv
+      - run: ./config.sh --url https://github.com/phamtuan239/node-devops --token AOFFOOKMMQTFLRDNKDG7P7TC76R6G
       - run: |
           export PORT="${{ secrets.PORT }}"
           export NODE_ENV="${{ secrets.NODE_ENV }}"
@@ -19,6 +19,7 @@ jobs:
           export MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}
           export MONGO_INITDB_ROOT_USERNAME=${{ secrets.MONGO_INITDB_ROOT_USERNAME }}
           export MONGO_INITDB_ROOT_PASSWORD=${{ secrets.MONGO_INITDB_ROOT_PASSWORD }}
-      - run: printenv    
+      - run: ./run.sh
+      - run: printenv
       - run: docker-compose -f docker-compose.prod.yml down
       - run: docker-compose -f docker-compose.prod.yml up -d --build
