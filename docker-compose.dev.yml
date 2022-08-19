@@ -25,7 +25,7 @@ services:
       - NODE_ENV=development
       - MONGO_USERNAME=root
       - MONGO_PASSWORD=example
-    command: npm run dev
+    command: pm2-runtime ecosystem.config.js --env development
   mongodb:
     image: mongo
     container_name: mongodb
