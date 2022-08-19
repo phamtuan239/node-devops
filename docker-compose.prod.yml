@@ -17,8 +17,8 @@ services:
     environment:
       - PORT=${PORT}
       - NODE_ENV=production
-      - MONGO_USERNAME=${{ MONGO_USERNAME }}
-      - MONGO_PASSWORD=${{ MONGO_PASSWORD }}
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
     command: pm2-runtime ecosystem.config.js --env production
   mongodb:
     image: mongo
