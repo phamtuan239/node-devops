@@ -11,15 +11,13 @@ jobs:
       - uses: actions/checkout@v3
       - run: ls
       - run: printenv
-      - run: ./config.sh --url https://github.com/phamtuan239/node-devops --token AOFFOOKMMQTFLRDNKDG7P7TC76R6G
       - run: |
-          export PORT="${{ secrets.PORT }}"
-          export NODE_ENV="${{ secrets.NODE_ENV }}"
+          sudo export PORT="${{ secrets.PORT }}"
+          sudo export NODE_ENV="${{ secrets.NODE_ENV }}"
           export MONGO_USERNAME="${{ secrets.MONGO_USERNAME }}"
           export MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}
           export MONGO_INITDB_ROOT_USERNAME=${{ secrets.MONGO_INITDB_ROOT_USERNAME }}
           export MONGO_INITDB_ROOT_PASSWORD=${{ secrets.MONGO_INITDB_ROOT_PASSWORD }}
-      - run: ./run.sh
       - run: printenv
       - run: docker-compose -f docker-compose.prod.yml down
       - run: docker-compose -f docker-compose.prod.yml up -d --build
